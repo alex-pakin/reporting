@@ -1,10 +1,12 @@
 package ru.netology.delivery.Data;
 
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.MethodOrderer;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import java.util.Random;
 
 
 public class DataGenerator {
@@ -38,8 +40,8 @@ public class DataGenerator {
         private Registration() {
         }
 
-        public static User generateUser(String locale,int days) {
-            return new User(generateCity(locale),generateDate(days),generateName(locale),generatePhone(locale));
+        public static User generateUser(String locale) {
+            return new User(generateCity(locale),generateName(locale),generatePhone(locale));
         }
     }
 
