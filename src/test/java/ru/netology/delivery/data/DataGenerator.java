@@ -9,7 +9,6 @@ import java.util.Locale;
 
 public class DataGenerator {
     private DataGenerator() {
-        
     }
 
     public static String generateCity(String locale) {
