@@ -1,23 +1,19 @@
-package ru.netology.delivery.Data;
+package ru.netology.delivery.data;
 
 import com.github.javafaker.Faker;
-import org.junit.jupiter.api.MethodOrderer;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
-import java.util.Random;
 
 
 public class DataGenerator {
     private DataGenerator() {
-
     }
 
     public static String generateCity(String locale) {
         Faker faker = new Faker(new Locale("ru"));
-        String city = faker.address().city();
-        return city;
+        return faker.address().city();
     }
 
     public static String generateDate(int days) {
@@ -26,14 +22,12 @@ public class DataGenerator {
 
     public static String generateName(String locale) {
         Faker faker = new Faker(new Locale("ru"));
-        String name = faker.name().firstName() + " " + faker.name().lastName();
-        return name;
+        return faker.name().firstName() + " " + faker.name().lastName();
     }
 
     public static String generatePhone(String locale) {
         Faker faker = new Faker(new Locale("ru"));
-        String phone = faker.phoneNumber().phoneNumber();
-        return phone;
+        return faker.phoneNumber().phoneNumber();
     }
 
     public static class Registration {
@@ -41,7 +35,7 @@ public class DataGenerator {
         }
 
         public static User generateUser(String locale) {
-            return new User(generateCity(locale),generateName(locale),generatePhone(locale));
+            return new User(generateCity(locale), generateName(locale), generatePhone(locale));
         }
     }
 

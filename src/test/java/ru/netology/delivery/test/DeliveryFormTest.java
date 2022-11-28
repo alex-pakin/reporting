@@ -1,10 +1,11 @@
-package ru.netology.delivery.Test;
+package ru.netology.delivery.test;
 
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ru.netology.delivery.Data.DataGenerator;
-import ru.netology.delivery.Data.User;
+import org.openqa.selenium.Keys;
+import ru.netology.delivery.data.DataGenerator;
+import ru.netology.delivery.data.User;
 
 import java.time.Duration;
 
@@ -25,7 +26,7 @@ public class DeliveryFormTest {
         String initialDate = DataGenerator.generateDate(3);
         String newDate = DataGenerator.generateDate(7);
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(initialDate);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -35,7 +36,7 @@ public class DeliveryFormTest {
                 +"успешно запланирована на " + initialDate), Duration.ofSeconds(10)).shouldBe(visible);
         refresh();
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(newDate);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -52,7 +53,7 @@ public class DeliveryFormTest {
         String initialDate = DataGenerator.generateDate(13);
         String newDate = DataGenerator.generateDate(6);
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(initialDate);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -60,7 +61,7 @@ public class DeliveryFormTest {
         $x("//*[text()='Запланировать']").click();
         refresh();
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(newDate);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -77,7 +78,7 @@ public class DeliveryFormTest {
         String initialDate = DataGenerator.generateDate(7);
         String newDate = DataGenerator.generateDate(1);
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(initialDate);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -85,7 +86,7 @@ public class DeliveryFormTest {
         $x("//*[text()='Запланировать']").click();
         refresh();
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(newDate);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -100,14 +101,14 @@ public class DeliveryFormTest {
         User user = DataGenerator.Registration.generateUser("ru");
         String date = DataGenerator.generateDate(3);
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(date);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
         $x("//*[@data-test-id='agreement']").click();
         $x("//*[text()='Запланировать']").click();
         $(".notification__content").shouldHave(Condition.text("Встреча успешно запланирована на "
-                + date), Duration.ofSeconds(10)).shouldBe(visible);
+                + date), Duration.ofSeconds(12)).shouldBe(visible);
     }
 
     @Test
@@ -116,7 +117,7 @@ public class DeliveryFormTest {
         String date = DataGenerator.generateDate(3);
         String cityWithDash = "Санкт-Петербург";
         $x("//*[@data-test-id='city']//input").val(cityWithDash);
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(date);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -132,7 +133,7 @@ public class DeliveryFormTest {
         String date = DataGenerator.generateDate(3);
         String cityWithE = "Орёл";
         $x("//*[@data-test-id='city']//input").val(cityWithE);
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(date);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -148,7 +149,7 @@ public class DeliveryFormTest {
         String date = DataGenerator.generateDate(3);
         String cityWithSpace = "Нижний Новгород";
         $x("//*[@data-test-id='city']//input").val(cityWithSpace);
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(date);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -164,7 +165,7 @@ public class DeliveryFormTest {
         String date = DataGenerator.generateDate(3);
         String nameWithDash = "Ана-Мария Огбезян";
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(date);
         $x("//*[@data-test-id='name']//input").val(nameWithDash);
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -180,7 +181,7 @@ public class DeliveryFormTest {
         String date = DataGenerator.generateDate(3);
         String surnameWithDash = "Андрей Понкратов-Белый";
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(date);
         $x("//*[@data-test-id='name']//input").val(surnameWithDash);
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -196,7 +197,7 @@ public class DeliveryFormTest {
         String date = DataGenerator.generateDate(3);
         String cityWrongSpelling = "Санкт Петербург";
         $x("//*[@data-test-id='city']//input").val(cityWrongSpelling);
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(date);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -212,7 +213,7 @@ public class DeliveryFormTest {
         String date = DataGenerator.generateDate(3);
         String cityNotInList = "Белозерск";
         $x("//*[@data-test-id='city']//input").val(cityNotInList);
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(date);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -226,7 +227,7 @@ public class DeliveryFormTest {
         User user = DataGenerator.Registration.generateUser("ru");
         String date = DataGenerator.generateDate(1);
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(date);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -242,7 +243,7 @@ public class DeliveryFormTest {
         String date = DataGenerator.generateDate(3);
         String name = "James Bond";
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(date);
         $x("//*[@data-test-id='name']//input").val(name);
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -257,7 +258,7 @@ public class DeliveryFormTest {
         User user = DataGenerator.Registration.generateUser("ru");
         String date = DataGenerator.generateDate(3);
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(date);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -271,7 +272,7 @@ public class DeliveryFormTest {
         User user = DataGenerator.Registration.generateUser("ru");
         String date = DataGenerator.generateDate(3);
         $x("//*[@data-test-id='city']//input").val("");
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(date);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -286,7 +287,7 @@ public class DeliveryFormTest {
         User user = DataGenerator.Registration.generateUser("ru");
         String date = DataGenerator.generateDate(3);
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(date);
         $x("//*[@data-test-id='name']//input").val("");
         $x("//*[@data-test-id='phone']//input").val(user.getPhone());
@@ -300,7 +301,7 @@ public class DeliveryFormTest {
     void shouldNotSendFormIfEmptyDate() {
         User user = DataGenerator.Registration.generateUser("ru");
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val("");
         $x("//*[@data-test-id='name']//input").val("Джеймс Бонд");
         $x("//*[@data-test-id='phone']//input").val("+79110070707");
@@ -315,7 +316,7 @@ public class DeliveryFormTest {
         User user = DataGenerator.Registration.generateUser("ru");
         String date = DataGenerator.generateDate(3);
         $x("//*[@data-test-id='city']//input").val(user.getCity());
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[@data-test-id='date']//input").val(date);
         $x("//*[@data-test-id='name']//input").val(user.getName());
         $x("//*[@data-test-id='phone']//input").val("");
@@ -327,7 +328,7 @@ public class DeliveryFormTest {
 
     @Test
     void shouldNotSendFormIfWholeFormEmpty() {
-        $x("//*[@data-test-id='date']//input").doubleClick().sendKeys("BackSpace");
+        $x("//*[@data-test-id='date']//input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.BACK_SPACE);
         $x("//*[text()='Запланировать']").click();
         $x("//*[@data-test-id='city']//*[@class='input__sub']").shouldHave(exactText("Поле обязательно "
                 + "для заполнения"));

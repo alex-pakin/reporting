@@ -1,4 +1,4 @@
-package ru.netology.delivery.Data;
+package ru.netology.delivery.data;
 
 import lombok.Data;
 
