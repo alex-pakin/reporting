@@ -124,7 +124,7 @@ public class DeliveryFormTest {
         $x("//*[@data-test-id='agreement']").click();
         $x("//*[text()='Запланировать']").click();
         $(".notification__content").shouldHave(Condition.text("Встреча успешно запланирована на "
-                + date), Duration.ofSeconds(10)).shouldBe(visible);
+                + date), Duration.ofSeconds(15)).shouldBe(visible);
     }
 
     @Test
